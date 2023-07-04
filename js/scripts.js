@@ -21,10 +21,15 @@ let pokemonRepository = (function () {
             types: ['rock', 'ground']
         }
     ];
-    
 
-    function add(pokemon){
-        pokemonList.push(pokemon)
+
+    function add(pokemon) {
+
+        if (typeof pokemon === 'object') {
+            pokemonList.push(pokemon)
+        } else {
+            document.write(`${pokemon} is not an object. Only object is accepted <br><br><br>`)
+        }
     }
 
     function getAll() {
@@ -37,6 +42,8 @@ let pokemonRepository = (function () {
     }
 
 })();
+
+pokemonRepository.add({name: 'Pikachu', height: '0.4', type: ['electric']})
 
 let pokemonList = pokemonRepository.getAll()
 
