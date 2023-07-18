@@ -77,11 +77,30 @@ let pokemonRepository = (function () {
             modal.appendChild(pokemonImage);
             modalContainer.appendChild(modal);
 
-
+            //close modal on click 
+            document.querySelector('.modal-close').addEventListener('click', () => {
+                hideModal();
+            });
 
             console.log(pokemon);
         });
     }
+
+
+    // is this the most optimal way to hide modal?
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+    }
+
+    window.addEventListener('keydown', (e) => {
+        let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal();
+        }
+    });
+
+
 
 
     function addListItem(pokemon) {
@@ -105,7 +124,8 @@ let pokemonRepository = (function () {
         addListItem: addListItem,
         showDetails: showDetails,
         loadList: loadList,
-        loadDetails: loadDetails
+        loadDetails: loadDetails,
+        hideModal: hideModal
     }
 
 })();
