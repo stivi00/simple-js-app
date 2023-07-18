@@ -39,7 +39,11 @@ let pokemonRepository = (function () {
         return fetch(url).then(function (response) {
             return response.json();
         }).then(function (details) {
-            item.imageUrl = details.sprites.front_default;
+
+            // detailed information about pokemon is extracted from details argument
+
+            console.log(details)
+            item.imageUrl = details.sprites.other.dream_world.front_default;
             item.height = details.height;
             item.types = details.types;
         }).catch(function (e) {
@@ -63,9 +67,18 @@ let pokemonRepository = (function () {
             let pokemonName = document.createElement('h1');
             pokemonName.innerText = pokemon.name;
 
+            let pokemonHeight = document.createElement('p');
+            pokemonHeight.innerText = 'Height: ' + pokemon.height
+
             let closeModal = document.createElement('button');
             closeModal.classList.add('modal-close');
             closeModal.innerText = 'Close';
+
+            let typesElement = document.createElement('p');
+            typesElement.innerHTML = "TYPE: " + pokemon.types.map( pokemon => {
+                return pokemon.type.name
+            })
+
 
             let pokemonImage = document.createElement('img');
             pokemonImage.classList.add('pokemon-image');
@@ -73,8 +86,11 @@ let pokemonRepository = (function () {
 
 
             modal.appendChild(pokemonName);
+            modal.appendChild(pokemonHeight);
             modal.appendChild(closeModal);
             modal.appendChild(pokemonImage);
+            modal.appendChild(typesElement);
+            
             modalContainer.appendChild(modal);
 
             //close modal on click 
@@ -82,7 +98,7 @@ let pokemonRepository = (function () {
                 hideModal();
             });
 
-            console.log(pokemon);
+            // console.log(pokemon.detailsUrl);
         });
     }
 
