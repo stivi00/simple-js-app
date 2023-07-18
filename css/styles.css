@@ -53,3 +53,17 @@
     max-width: 700px;
     text-align: left;
   }
+
+  .modal-close {
+    float: right;
+    -webkit-appearance: none;
+    /* border: 0; */
+    background: none;
+    color: #777;
+    text-decoration: underline;
+  }
+
+  .pokemon-image{
+    width: 100px;
+    height: 100px;
+  }

@@ -56,23 +56,32 @@ let pokemonRepository = (function () {
 
             modalContainer.innerHTML = '';
 
+            //modal content goes here
             let modal = document.createElement('div');
             modal.classList.add('modal');
 
             let pokemonName = document.createElement('h1');
             pokemonName.innerText = pokemon.name;
 
-            let pokemonImage = document.createElement('img');   
+            let closeModal = document.createElement('button');
+            closeModal.classList.add('modal-close');
+            closeModal.innerText = 'Close';
+
+            let pokemonImage = document.createElement('img');
+            pokemonImage.classList.add('pokemon-image');
             pokemonImage.src = pokemon.imageUrl;
+
+
             modal.appendChild(pokemonName);
+            modal.appendChild(closeModal);
             modal.appendChild(pokemonImage);
             modalContainer.appendChild(modal);
 
 
 
-          console.log(pokemon);
+            console.log(pokemon);
         });
-      }
+    }
 
 
     function addListItem(pokemon) {
