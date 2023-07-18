@@ -64,15 +64,21 @@ let pokemonRepository = (function () {
             let modal = document.createElement('div');
             modal.classList.add('modal');
 
-            let pokemonName = document.createElement('h1');
-            pokemonName.innerText = pokemon.name;
-
-            let pokemonHeight = document.createElement('p');
-            pokemonHeight.innerText = 'Height: ' + pokemon.height
+            let modalHeader = document.createElement('div');
+            modalHeader.classList.add('modal-header');
 
             let closeModal = document.createElement('button');
             closeModal.classList.add('modal-close');
             closeModal.innerText = 'Close';
+
+            let modalFooter = document.createElement('div');
+            modalFooter.classList.add('modal-footer');
+
+            let pokemonName = document.createElement('h2');
+            pokemonName.innerText = pokemon.name;
+
+            let pokemonHeight = document.createElement('p');
+            pokemonHeight.innerText = 'HEIGHT: ' + pokemon.height
 
             let typesElement = document.createElement('p');
             typesElement.innerHTML = "TYPE: " + pokemon.types.map( pokemon => {
@@ -84,13 +90,15 @@ let pokemonRepository = (function () {
             pokemonImage.classList.add('pokemon-image');
             pokemonImage.src = pokemon.imageUrl;
 
-
-            modal.appendChild(pokemonName);
-            modal.appendChild(pokemonHeight);
-            modal.appendChild(closeModal);
-            modal.appendChild(pokemonImage);
-            modal.appendChild(typesElement);
+            modalHeader.appendChild(pokemonName);
+            modalHeader.appendChild(closeModal);
             
+            modalFooter.appendChild(pokemonHeight);
+            modalFooter.appendChild(typesElement);
+
+            modal.appendChild(modalHeader);
+            modal.appendChild(pokemonImage);
+            modal.appendChild(modalFooter);
             modalContainer.appendChild(modal);
 
             //close modal on click 
@@ -98,7 +106,6 @@ let pokemonRepository = (function () {
                 hideModal();
             });
 
-            // console.log(pokemon.detailsUrl);
         });
     }
 
@@ -115,8 +122,6 @@ let pokemonRepository = (function () {
             hideModal();
         }
     });
-
-
 
 
     function addListItem(pokemon) {

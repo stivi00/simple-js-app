@@ -45,22 +45,39 @@
   
   .modal {
     margin: auto;
-    display: inline-block;
-    box-sizing: border-box;
+    display: flex;
+    border-radius: 5%;
+    flex-direction: column;
+    /* box-sizing: border-box; */
     background: #fff;
-    padding: 15px;
-    width: 100%;
+    padding: 5px;
+    width: 30%;
     max-width: 700px;
     text-align: left;
   }
 
+  .modal > :not(:first-child){
+    align-self: center;
+    justify-self: center;
+  }
+
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom:1px solid #777;
+  }
+
+  .modal-footer{
+    /* border-top: 1px solid #777; */
+  }
+
   .modal-close {
-    float: right;
-    -webkit-appearance: none;
-    /* border: 0; */
+    border: none;
     background: none;
     color: #777;
     text-decoration: underline;
+    cursor: pointer;
   }
 
   .pokemon-image{
