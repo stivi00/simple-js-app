@@ -17,9 +17,11 @@ let pokemonRepository = (function () {
     }
 
     function loadList() {
-        return fetch(apiUrl).then(function (response) {
+        return fetch(apiUrl)
+        .then(function (response) {
             return response.json();
-        }).then(function (json) {
+        })
+        .then(function (json) {
             json.results.forEach(function (item) {
 
                 let pokemon = {
@@ -28,7 +30,8 @@ let pokemonRepository = (function () {
                 };
                 add(pokemon);
             });
-        }).catch(function (e) {
+        })
+        .catch(function (e) {
             console.error(e)
         })
     }
@@ -36,9 +39,11 @@ let pokemonRepository = (function () {
 
     function loadDetails(item) {
         let url = item.detailsUrl;
-        return fetch(url).then(function (response) {
+        return fetch(url)
+        .then(function (response) {
             return response.json();
-        }).then(function (details) {
+        })
+        .then(function (details) {
 
             // detailed information about pokemon is extracted from details argument
 
@@ -46,7 +51,8 @@ let pokemonRepository = (function () {
             item.imageUrl = details.sprites.other.dream_world.front_default;
             item.height = details.height;
             item.types = details.types;
-        }).catch(function (e) {
+        })
+        .catch(function (e) {
             console.error(e);
         });
     }
