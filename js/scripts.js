@@ -68,17 +68,17 @@ let pokemonRepository = (function () {
 
             //modal content goes here
             let modal = document.createElement('div');
-            modal.classList.add('modal');
+            modal.classList.add('custom-modal');
 
             let modalHeader = document.createElement('div');
-            modalHeader.classList.add('modal-header');
+            modalHeader.classList.add('custom-modal-header');
 
             let closeModal = document.createElement('button');
-            closeModal.classList.add('modal-close');
+            closeModal.classList.add('custom-modal-close');
             closeModal.innerText = 'Close';
 
             let modalFooter = document.createElement('div');
-            modalFooter.classList.add('modal-footer');
+            modalFooter.classList.add('custom-modal-footer');
 
             let pokemonName = document.createElement('h2');
             pokemonName.innerText = pokemon.name;
@@ -108,7 +108,7 @@ let pokemonRepository = (function () {
             modalContainer.appendChild(modal);
 
             //close modal on click 
-            document.querySelector('.modal-close').addEventListener('click', () => {
+            document.querySelector('.custom-modal-close').addEventListener('click', () => {
                 hideModal();
             });
 
