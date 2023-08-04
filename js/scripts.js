@@ -94,18 +94,23 @@ let pokemonRepository = (function () {
 
 
     function addListItem(pokemon) {
-        let pokemonList = document.querySelector('.list-group');
-        let listItem = document.createElement('li');
-        let button = document.createElement('button');
+        let pokemonRow = document.getElementById("pokemonRow");
+        let pokemonCard = document.createElement("div");
 
-        listItem.classList.add('list-group-item');
+        pokemonCard.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4", "pokemon-card"); // Set Bootstrap grid classes
+        let button = document.createElement("button");
         button.innerText = pokemon.name;
-        button.classList.add('btn', 'btn-primary');
-        listItem.appendChild(button);
-        pokemonList.appendChild(listItem);
+        
+        button.classList.add("btn", "btn-primary", "w-100"); // Add Bootstrap utility classes
+        button.setAttribute("data-target", "#modal-container"); // Set data-target attribute
+        button.setAttribute("data-toggle", "modal"); // Set data-toggle attribute
+        
+        pokemonCard.appendChild(button);
+        pokemonRow.appendChild(pokemonCard);
+        button.classList.add("rainbow-gradient-button");
 
-        button.addEventListener('click', function (event) {
-            showDetails(pokemon);
+        button.addEventListener("click", function (event) {
+          showDetails(pokemon);
         });
     }
 
@@ -117,7 +122,6 @@ let pokemonRepository = (function () {
         showDetails: showDetails,
         loadList: loadList,
         loadDetails: loadDetails,
-        // hideModal: hideModal
     }
 
 })();
