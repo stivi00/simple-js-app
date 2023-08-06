@@ -1,3 +1,36 @@
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+nav .logo {
+    width: 300px;
+    height: 140px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    text-decoration: underline;
+}
 
 .modal-image{
     width: 300px;
