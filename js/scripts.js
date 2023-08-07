@@ -47,7 +47,6 @@ let pokemonRepository = (function () {
 
                 // detailed information about pokemon is extracted from details argument
 
-                console.log(details)
                 item.imageUrl = details.sprites.other.dream_world.front_default;
                 item.height = details.height;
                 item.types = details.types;
@@ -80,20 +79,29 @@ let pokemonRepository = (function () {
     function addListItem(pokemon) {
         let pokemonRow = document.getElementById("pokemonRow");
         let pokemonCard = document.createElement("div");
+        let pokemonName = document.createElement("h5");
+        let pokemonImage = document.createElement('img')
 
-        pokemonCard.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4", "pokemon-card"); // Set Bootstrap grid classes
-        let button = document.createElement("button");
-        button.innerText = pokemon.name;
+        pokemonImage.classList.add('pokemon-image')
+        pokemonCard.classList.add("card", "pokemon-card", "col-lg-3", "col-md-4", "col-sm-6", "mb-4"); 
 
-        button.classList.add("btn", "btn-primary", "w-100"); // Add Bootstrap utility classes
-        button.setAttribute("data-target", "#modal-container"); // Set data-target attribute
-        button.setAttribute("data-toggle", "modal"); // Set data-toggle attribute
+        loadDetails(pokemon).then(function(){
 
-        pokemonCard.appendChild(button);
+            pokemonImage.src = pokemon.imageUrl;
+        })
+
+        pokemonName.innerText = pokemon.name;
+
+
+        pokemonCard.setAttribute("data-target", "#modal-container");
+        pokemonCard.setAttribute("data-toggle", "modal"); 
+
+        pokemonCard.appendChild(pokemonName);
+        pokemonCard.appendChild(pokemonImage);
+
         pokemonRow.appendChild(pokemonCard);
-        button.classList.add("rainbow-gradient-button");
 
-        button.addEventListener("click", function (event) {
+        pokemonCard.addEventListener("click", function (event) {
             showDetails(pokemon);
         });
     }
