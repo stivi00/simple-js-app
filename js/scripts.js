@@ -59,31 +59,31 @@ let pokemonRepository = (function () {
     function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
 
-            const modalContainer = document.getElementById("modal-container");
-            const modalTitle = document.getElementById("modal-title");
-            const modalHeight = document.getElementById("modal-height");
-            const modalImage = document.getElementById("modal-image");
+            const modalContainer = document.getElementById('modal-container');
+            const modalTitle = document.getElementById('modal-title');
+            const modalHeight = document.getElementById('modal-height');
+            const modalImage = document.getElementById('modal-image');
 
-            modalTitle.textContent = "Name: " + pokemon.name;
-            modalHeight.textContent = "Height: " + pokemon.height
+            modalTitle.textContent = 'Name: '  + pokemon.name;
+            modalHeight.textContent = 'Height: '  + pokemon.height
 
-            modalImage.setAttribute("src", pokemon.imageUrl);
-            modalImage.setAttribute("alt", pokemon.name);
+            modalImage.setAttribute('src', pokemon.imageUrl);
+            modalImage.setAttribute('alt', pokemon.name);
 
-            modalContainer.style.display = "block";
+            modalContainer.style.display = 'block';
 
         });
     }
 
 
     function addListItem(pokemon) {
-        let pokemonRow = document.getElementById("pokemonRow");
-        let pokemonCard = document.createElement("div");
-        let pokemonName = document.createElement("h5");
+        let pokemonRow = document.getElementById('pokemonRow');
+        let pokemonCard = document.createElement('div');
+        let pokemonName = document.createElement('h5');
         let pokemonImage = document.createElement('img')
 
         pokemonImage.classList.add('pokemon-image')
-        pokemonCard.classList.add("card", "pokemon-card", "col-lg-3", "col-md-4", "col-sm-6", "mb-4"); 
+        pokemonCard.classList.add('card', 'pokemon-card', 'col-lg-3', 'col-md-4', 'col-sm-6', 'mb-4'); 
 
         loadDetails(pokemon).then(function(){
 
@@ -93,15 +93,15 @@ let pokemonRepository = (function () {
         pokemonName.innerText = pokemon.name;
 
 
-        pokemonCard.setAttribute("data-target", "#modal-container");
-        pokemonCard.setAttribute("data-toggle", "modal"); 
+        pokemonCard.setAttribute('data-target', '#modal-container');
+        pokemonCard.setAttribute('data-toggle', 'modal'); 
 
         pokemonCard.appendChild(pokemonName);
         pokemonCard.appendChild(pokemonImage);
 
         pokemonRow.appendChild(pokemonCard);
 
-        pokemonCard.addEventListener("click", function (event) {
+        pokemonCard.addEventListener('click', function () {
             showDetails(pokemon);
         });
     }
@@ -128,14 +128,3 @@ pokemonRepository.loadList().then(function () {
     });
 
 });
-
-//FOR BUG WHERE MODAL CONTENT IS NOT XLEARED AFTER CLOSING 
-
-//apparently this code should work but doesn't
-
-// $(document).ready(function () {
-        
-//     $('.modal').on('hidden.bs.modal', function () {
-//         $(this).removeData('bs.modal');
-//     });
-// });
